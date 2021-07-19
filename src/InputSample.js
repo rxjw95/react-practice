@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function InputSample() {
   const [inputs, setInputs] = useState({
@@ -8,11 +8,12 @@ function InputSample() {
 
   const { name, nickname } = inputs;
 
+  const nameInput = useRef(); //useRef 사용
+
   /* 
   객체 업데이트에 대한 주의, 객체를 새롭게 만들어서 변경해야한다. 
   불변성을 지켜야한다. (react에서 가장 중요한 원칙)
   */
-
   const onChange = (e) => {
     const { name, value } = e.target;
 
@@ -28,11 +29,18 @@ function InputSample() {
       name: "",
       nickname: "",
     });
+    nameInput.current.focus(); //DOM 조작
   };
 
   return (
     <div>
-      <input name="name" placeholder="이름" onChange={onChange} value={name} />
+      <input
+        name="name"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+        ref={nameInput} //DOM 선택
+      />
       <input
         name="nickname"
         placeholder="별명"
