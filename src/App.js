@@ -11,8 +11,15 @@ function App() {
 
   return (
     <Wrapper style={style}>
-      <Hello name={"react"} color="green" background={"white"} />
-      <Hello name={"jangwook"} color="red" background={"blue"} />
+      <Hello
+        name={"react"}
+        color="green"
+        background={"white"}
+        isSpecial={false}
+      />
+
+      {/* isSpecial에 값을 넘기지 않으면 true 넘어가게 된다. */}
+      <Hello name={"jangwook"} color="red" background={"blue"} isSpecial />
       <Hello name={"difficult"} color="blue" background={"yellow"} />
     </Wrapper>
   );
