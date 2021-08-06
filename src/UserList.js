@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import User from "./User";
 
-function UserList({ users, onRemove }) {
+function UserList({ users, onRemove, onToggle }) {
     return (
         /* 
         map에서 컴포넌트 배열을 만들 때 key값을 사용하는 이유와 
@@ -9,7 +9,12 @@ function UserList({ users, onRemove }) {
         */
         <div>
             {users.map((user) => (
-                <User user={user} key={user.id} onRemove={onRemove} />
+                <User
+                    user={user}
+                    key={user.id}
+                    onRemove={onRemove}
+                    onToggle={onToggle}
+                />
             ))}
         </div>
     );
