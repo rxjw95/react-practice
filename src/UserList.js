@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import User from "./User";
 
 function UserList({ users, onRemove, onToggle }) {
@@ -20,4 +20,4 @@ function UserList({ users, onRemove, onToggle }) {
     );
 }
 
-export default UserList;
+export default React.memo(UserList);
