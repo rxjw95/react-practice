@@ -1,6 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import UserList from "./UserList";
 import CreateUser from "./CreateUser";
+
+/* 
+해당 함수를 사용하면 어떤 점에서 문제가 발생할까?
+inputs를 state로 관리하고 있는 해당 컴포넌트는 inputs가 변화할때마다 리렌더링이 된다. 
+그에 따라 countActiveUsers도 활성 사용자 수를 세기 위해 계속해서 호출이 된다.
+그렇다면 이 값을 렌더링에 관계없이 재사용할 수 있는 방법이 없을까?
+이 때 사용하는 함수를 useMemo 이다.
+
+useMemo로 선택한 값은 선택한 특정 값(deps 배열)이 바뀔때만 리렌더링할 때 재설정하고
+값이 바뀌지 않으면 선택한 값을 재사용하게 된다. 
+*/
+function countActiveUsers(users) {
+    console.log("활성 사용자 수를 세는 함수");
+    return users.filter((user) => user.active === true).length;
+}
 
 function App() {
     const [inputs, setInputs] = useState({
@@ -33,6 +48,9 @@ function App() {
 
     //특정 dom을 가져오고 싶을 때 혹은 상태 변화에 따른 컴포넌트의 리렌더링을 피하고 싶은 값을 사용할 때 useRef를 사용한다.
     const nextId = useRef(4); //값이 바뀌어도 리렌더링 되지 않는다.
+
+    //useMemo를 활용해서 users가 변경되지 않으면 기존 값을 count 값을 재사용한다.
+    const count = useMemo(() => countActiveUsers(users), [users]);
 
     const onCreate = () => {
         const user = {
@@ -84,6 +102,7 @@ function App() {
                 onCreate={onCreate}
             />
             <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+            <div>활성 사용자 수 : {count}</div>
         </div>
     );
 }
