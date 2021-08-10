@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+
+//state 는 숫자, 문자, 불린, 객체 등 모두 될 수 있다.
+function reducer(state, action) {
+    switch (action.type) {
+        case "INCREMENT":
+            return state + 1;
+        case "DECREMENT":
+            return state - 1;
+        default:
+            throw new Error("Unhandled action");
+    }
+}
 
 function Counter() {
-    const [number, setNumber] = useState(0); //구조 분해 할당 [현재 상태, 현재 상태를 업데이트하는 함수]
+    //많은 state를 관리하게 될 때 로직들이 컴포넌트 내에서 혼잡하게 구성될 수 있다.
+    //이 때 useReducer를 사용하면 업데이트 로직을 밖으로 분리할 수 있다.
+    //reducer라는 함수를 활용해서 state와 action을 받아 새로운 상태를 반환해준다.
+    //이 때 state는 현재 가리키고 있는 상태이며, action을 발생시키는 함수를 dispatch라고 한다.
+    const [number, dispatch] = useReducer(reducer, 0);
 
     const onIncrease = () => {
-        //setNumber(number + 1); //직접 참조해서 직접 값을 넣겠다.
-        setNumber((prevNumber) => prevNumber + 1); //함수형 업데이트, 이 상태값을 어떻게 할지에 대한 로직이 있는 함수를 정의
-        //별 차이가 없지만 추후에 컴포넌트를 최적화하기 위해선 함수형 업데이트가 필요하다.
+        dispatch({
+            type: "INCREMENT",
+        });
     };
 
     const onDecrease = () => {
-        setNumber(number - 1);
+        dispatch({
+            type: "DECREMENT",
+        });
     };
 
     return (
