@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# 두 번째 todo-list 를 만들기 전 기초 정리
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 계기
+- 회사에서 다른 그룹에 지원을 나가게 되었는데, react 페이지를 하나 만드는 것이었다. 하지만 나는 javascript를 학교에서도 수업을 듣지 않아서 지식이 한참 부족했다.
+- 프로젝트를 개발하면서 함수형 컴포넌트에서 사용되는 hooks에 대한 지식이 필요하다.
 
-## Available Scripts
+## 공부 방법
 
-In the project directory, you can run:
+react 클래스형 컴포넌트와의 다른 점들을 우선 훑어봤다. 그리고 이전 첫 번째 todo-list와 같이 강의를 따라가다 으음? 하는 것들은 다시 찾아보고 기록한다.   
+중간중간에 과제가 있는데, 무조건 답을 보지 않고 스스로 해봤다. (useState 대신 useReducer, contextAPI를 활용)   
 
-### `yarn start`
+지속적으로 javascript를 공부한다.  객체와 비동기, 클로저, 스코프, 어지럽다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 여전히, 나의 javascript 실력은 0에 수렴한다. (javascript 뿐만이 아닐지도)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 기능
+- 기능이란게 없다. 기존 todo-list의 내용을 hooks로 변경했다.
+- 추가적으로 다양한 hooks(useRef, useMemo, useCallback, useReducer, Context API, hook 커스터마이징)를 사용해서 코드 정리 그리고 최적화를 진행했다.
+- 해당 강의는 시간이 조금 걸렸는데, 사내 단기 react 교육도 수강하고, 회사 프로젝트에서 내가 맡은 페이지의 scss가 먹히질 않아서 상위 컨테이너들의 속성을 헤집느라 고생을 좀 했다. (important 제발) 
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 회고
+- 웹 컴포넌트 기반으로 이 모듈들을 조립하는 과정, 그리고 css도 단순히 별도의 sheet를 생성하지 않고 styled-component라는 라이브러리를 적용해서 js로 컴포넌트를 꾸미고, 이 둘러쌓인 컴포넌트들의 구조가 복잡해질수록 고려해야하는 렌더링의 최적화 설계들을 보면서 정말 쉬운건 없다라는 것을 느꼈다.
+- 최적화에 목을 메다 가독성과 성능이 떨어질 수 있다. 
+- 항상 기존의 코드 그리고 성능 그리고 도입할 코드와 이로부터 얻을 수 이점 혹은 사이드 이펙트에 대해 고민을 해야한다.
+- 강의를 듣다보면 여러 기능이 있는 메서드지만 해당 강의에서 사용되는 기능만을 알려주는 때가 종종 있었다. (useRef는 값 변경시 리렌더되지않는 기능, *DOM 접근이 가능하는 기능* 등) 항상 공부할 때 알려주는 것만이 아니라 호기심을 가지고 한번 더 찾아보고 공부하고 기록하자.
