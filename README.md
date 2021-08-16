@@ -14,8 +14,8 @@ react 클래스형 컴포넌트와의 다른 점들을 우선 훑어봤다. 그�
 > 여전히, 나의 javascript 실력은 0에 수렴한다. (javascript 뿐만이 아닐지도)
 
 ## 기능
-- 기능이란게 없다. 기존 todo-list의 내용을 hooks로 변경했다.
-- 추가적으로 다양한 hooks(useRef, useMemo, useCallback, useReducer, Context API, hook 커스터마이징)를 사용해서 코드 정리 그리고 최적화를 진행했다.
+- 기능이란게 없다.
+- 다양한 hooks(useRef, useMemo, useCallback, useReducer, Context API, hook 커스터마이징)를 사용해서 코드 정리 그리고 최적화하는 방법을 공부했다.
 - 해당 강의는 시간이 조금 걸렸는데, 사내 단기 react 교육도 수강하고, 회사 프로젝트에서 내가 맡은 페이지의 scss가 먹히질 않아서 상위 컨테이너들의 속성을 헤집느라 고생을 좀 했다. (important 제발) 
 
 ## 회고
